@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	ka="killall" \
+	g="git" \
+	sdn="sudo shutdown -h now" \
+	r="ranger" \
+	v="nvim" \
+	e="emacs -nw" \
+	vim="nvim" \
+	p="sudo pacman" \
+	mp3="yt-dlp --extract-audio --audio-format mp3" \
+	youtube-dl="yt-dlp" \
+	ls="exa --icons"

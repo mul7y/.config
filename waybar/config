@@ -1,0 +1,113 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["pulseaudio", "custom/weather", "clock#1", "clock#2", "tray"],
+
+    "hyprland/window": {
+	"format": "{}"
+    },
+
+"hyprland/workspaces": {
+	"format": "{icon}",
+	"on-click": "activate",
+	"format-icons": {
+		"1": "1",
+		"2": "2",
+		"3": "3",
+		"4": "4",
+		"5": "5",
+		"6": "6",
+		"7": "7",
+		"8": "8",
+		"9": "9",
+		"11": "1",
+		"12": "2",
+		"13": "3",
+		"14": "4",
+		"15": "5",
+		"16": "6",
+		"17": "7",
+		"18": "8",
+		"19": "9",
+	},
+	"persistent-workspaces": {
+		"11": ["DP-2"],
+		"12": ["DP-2"],
+		"13": ["DP-2"],
+		"14": ["DP-2"],
+		"15": ["DP-2"],
+		"16": ["DP-2"],
+		"17": ["DP-2"],
+		"18": ["DP-2"],
+		"19": ["DP-2"],
+		"1": ["HDMI-A-1"],
+		"2": ["HDMI-A-1"],
+		"3": ["HDMI-A-1"],
+		"4": ["HDMI-A-1"],
+		"5": ["HDMI-A-1"],
+		"6": ["HDMI-A-1"],
+		"7": ["HDMI-A-1"],
+		"8": ["HDMI-A-1"],
+		"9": ["HDMI-A-1"],
+		}
+	},
+
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+
+    "network": {
+        "format": "{icon}",
+        "format-alt": "{ipaddr}/{cidr} {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": {
+            "wifi": ["󰤟", "󰤢" ,""],
+            "ethernet": ["󰈀"],
+            "disconnected": ["󰈂"]
+        },
+    "tooltip": false
+
+    },
+    "clock#1": {
+        "format": "<span color='#bf616a'> </span>{:%H:%M}",
+    },
+
+    "clock#2": {
+        "format": "<span color='#825882'> </span>{:%a %b %d}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+
+"custom/weather": {
+    "format": "{} °",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar",
+    "return-type": "json"
+}, 
+
+"pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "<span color='#BA918F'></span>",
+    "format-icons": {
+        "headphones": [" ", " ", " "],
+        "handsfree": "",
+        "headset":  [" ", " ", " "],
+        "phone": [" ", " ", " "],
+        "portable": [" ", " ", " "],
+        "car": [" ", " ", " "],
+        "default": 
+	["<span color='#7c9dba'></span>", "<span color='#7c9dba'></span>", "<span color='#7c9dba'></span>"]
+        },
+   "scroll-step": 1,
+   "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+   "on-click-right": "/usr/bin/pavucontrol",
+    "ignored-sinks": ["Easy Effects Sink"]
+}
+    },
