@@ -1,11 +1,22 @@
 #+title: Hypr Config
 #+property: header-args :tangle hyprland.conf
 
-* Hyprland Config
+* Table of Contents :toc:
+- [[#setup][Setup:]]
+  - [[#monitors--autostart][Monitors & Autostart:]]
+  - [[#env-vars][Env vars:]]
+  - [[#input-settings][Input settings:]]
+- [[#general][General:]]
+  - [[#gaps--borders][Gaps & Borders:]]
+  - [[#decorations][Decorations:]]
+  - [[#animations][Animations:]]
+  - [[#unsortet-misc][Unsortet Misc:]]
+  - [[#window-rules][Window Rules:]]
+  - [[#binds][Binds:]]
 
-** Setup:
-*** Monitors & Autostart:
-#+BEGIN_SRC C++
+* Setup:
+** Monitors & Autostart:
+#+BEGIN_SRC conf
 monitor=DP-2,1920x1080@144,1920x0,1
 monitor=HDMI-A-1,1920x1080@60,0x0,1
 
@@ -20,8 +31,8 @@ exec-once = wl-paste --type text --watch cliphist store #Stores only text data
 exec-once = wl-paste --type image --watch cliphist store #Stores only image data
 #+END_SRC
 
-*** Env vars:
-#+BEGIN_SRC C++
+** Env vars:
+#+BEGIN_SRC conf
 env = XCURSOR_SIZE,24
 env = LIBVA_DRIVER_NAME,nvidia
 env = XDG_SESSION_TYPE,wayland
@@ -30,8 +41,8 @@ env = __GLX_VENDOR_LIBRAY_NAME,nvidia
 env = WLR_NO_HARDWARE_CURSORS,1
 #+END_SRC
 
-*** Input settings:
-#+BEGIN_SRC C++
+** Input settings:
+#+BEGIN_SRC conf
 input {
     kb_layout = us
     kb_variant = intl
@@ -49,10 +60,10 @@ input {
 }
 #+END_SRC
 
-** General:
+* General:
 
-*** Gaps & Borders:
-#+BEGIN_SRC C++
+** Gaps & Borders:
+#+BEGIN_SRC conf
 general {
 
     gaps_in = 5
@@ -65,8 +76,8 @@ general {
 }
 #+END_SRC
 
-*** Decorations:
-#+BEGIN_SRC C++
+** Decorations:
+#+BEGIN_SRC conf
 decoration {
     # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
@@ -85,8 +96,8 @@ decoration {
 }
 #+END_SRC
 
-*** Animations:
-#+BEGIN_SRC C++
+** Animations:
+#+BEGIN_SRC conf
 animations {
     enabled = true
 
@@ -119,9 +130,9 @@ gestures {
 }
 #+END_SRC
 
-*** Unsortet Misc:
+** Unsortet Misc:
 
-#+BEGIN_SRC C++
+#+BEGIN_SRC conf
 # Blur for programs
 blurls=waybar
 blurls=wofi
@@ -132,9 +143,9 @@ device:Logitech USB Receiver {
 }
 #+END_SRC
 
-*** Window Rules:
+** Window Rules:
 Float Windows:
-#+BEGIN_SRC C++
+#+BEGIN_SRC conf
 windowrule=float,pavucontrol
 windowrulev2 = float,class:^()$,title:^(Picture in picture)$
 windowrulev2 = float,class:^(brave)$,title:^(Save File)$
@@ -143,8 +154,8 @@ windowrulev2 = float,class:(org.https://nomacs.nomacs)$
 windowrulev2 = float,class:^(brave)$,title:^(Open File)$
 #+END_SRC
 
-*** Binds:
-#+BEGIN_SRC C++
+** Binds:
+#+BEGIN_SRC conf
 $mainMod = SUPER
 
 bind = $mainMod, Return, exec,kitty
@@ -160,7 +171,7 @@ bind = ALT_SHIFT, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-c
 #+END_SRC
 
 Move focus with mainMod + arrow keys
-#+BEGIN_SRC C++
+#+BEGIN_SRC conf
 bind = $mainMod, left, movefocus, l
 bind = $mainMod, right, movefocus, r
 bind = $mainMod, up, movefocus, u
@@ -168,7 +179,7 @@ bind = $mainMod, down, movefocus, d
 #+END_SRC
 
 Move focus with mainMod + vim keys
-#+BEGIN_SRC C++
+#+BEGIN_SRC conf
 bind = $mainMod, h, movefocus, l
 bind = $mainMod, l, movefocus, r
 bind = $mainMod, k, movefocus, u
@@ -176,7 +187,7 @@ bind = $mainMod, j, movefocus, d
 #+END_SRC
 
 Move window with mainMod + vim keys
-#+BEGIN_SRC C++
+#+BEGIN_SRC conf
 bind = $mainMod SHIFT, h, movewindow, l
 bind = $mainMod SHIFT, l, movewindow, r
 bind = $mainMod SHIFT, k, movewindow, u
@@ -184,7 +195,7 @@ bind = $mainMod SHIFT, j, movewindow, d
 #+END_SRC
 
 Switch workspaces with mainMod + [0-9]
-#+BEGIN_SRC C++
+#+BEGIN_SRC conf
 bind = $mainMod, 1, split-workspace, 1
 bind = $mainMod, 2, split-workspace, 2
 bind = $mainMod, 3, split-workspace, 3
@@ -198,7 +209,7 @@ bind = $mainMod, 0, split-workspace, 10
 #+END_SRC
 
 Move active window to a workspace with mainMod + SHIFT + [0-9]
-#+BEGIN_SRC C++
+#+BEGIN_SRC conf
 bind = $mainMod SHIFT, 1, split-movetoworkspace, 1
 bind = $mainMod SHIFT, 2, split-movetoworkspace, 2
 bind = $mainMod SHIFT, 3, split-movetoworkspace, 3
@@ -212,19 +223,19 @@ bind = $mainMod SHIFT, 0, split-movetoworkspace, 10
 #+END_SRC
 
 Scroll through existing workspaces with mainMod + scroll
-#+BEGIN_SRC C++
+#+BEGIN_SRC conf
 bind = $mainMod, mouse_down, workspace, e+1
 bind = $mainMod, mouse_up, workspace, e-1
 #+END_SRC
 
 Move/resize windows with mainMod + LMB/RMB and dragging
-#+BEGIN_SRC C++
+#+BEGIN_SRC conf
 bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
 #+END_SRC
 
 Bind keyboard media keys
-#+BEGIN_SRC C++
+#+BEGIN_SRC conf
 binde= , xf86audioraisevolume, exec, pamixer -i 5
 binde= , xf86audiolowervolume, exec, pamixer -d 5
 bind =, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
