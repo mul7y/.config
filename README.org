@@ -1,4 +1,4 @@
-#+title: Readme
+#+title: my dotfiles
 
 * Truly a shamefull display.
-oof.
+*oof.*
